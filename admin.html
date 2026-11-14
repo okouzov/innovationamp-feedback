@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ · Оценка на обученията · InnovationAMP</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#080c20">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="wrap wrap--wide">
+    <header class="top">
+      <a class="brand" href="index.html">
+        <div class="brand-mark" aria-hidden="true">G</div>
+        <div class="brand-text">
+          <b>Институт GATE</b>
+          <span>InnovationAMP · админ панел</span>
+        </div>
+      </a>
+      <span class="pill pill--demo" id="demoPill" hidden>Демо режим · данните са само в този браузър</span>
+    </header>
+
+    <!-- ВХОД -->
+    <form class="card login" id="login" autocomplete="off">
+      <h1>Вход за администратор</h1>
+      <p>Резултатите от анкетата са достъпни само с парола.</p>
+      <label class="field">
+        <span>Парола</span>
+        <input class="input" id="pwd" type="password" required autofocus>
+      </label>
+      <button class="btn btn--primary" id="loginBtn" type="submit">Вход</button>
+      <div class="login-msg" id="loginMsg" role="alert"></div>
+      <p id="demoHint" hidden>Демо режим: паролата е <b>demo</b>.</p>
+    </form>
+
+    <!-- ТАБЛО -->
+    <main class="dash" id="dash" hidden>
+      <div class="dash-head">
+        <div>
+          <h1>Резултати от оценката</h1>
+          <p id="updated"></p>
+        </div>
+        <div class="toolbar">
+          <button class="btn btn--sm" id="seedBtn" type="button" hidden>Зареди примерни данни</button>
+          <button class="btn btn--sm" id="refreshBtn" type="button">Обнови</button>
+          <button class="btn btn--sm" id="csvBtn" type="button">Експорт в CSV</button>
+          <button class="btn btn--sm btn--danger" id="resetBtn" type="button">Изтрий цялата база</button>
+          <button class="btn btn--sm btn--ghost" id="logoutBtn" type="button">Изход</button>
+        </div>
+      </div>
+
+      <div class="filters" id="filters" role="group" aria-label="Филтър по обучение"></div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="grid2">
+        <section class="card box">
+          <h2>Средна оценка по въпроси</h2>
+          <p class="box-sub">Скала от 1 (напълно несъгласен) до 5 (напълно съгласен).</p>
+          <div id="avgChart"></div>
+        </section>
+        <section class="card box">
+          <h2>Разпределение на отговорите</h2>
+          <p class="box-sub">Дял на всяка оценка по въпроси, в проценти.</p>
+          <div id="distChart"></div>
+        </section>
+      </div>
+
+      <section class="card box">
+        <h2>Коментари и предложения <span id="commentCount" style="color:var(--muted);font-family:var(--font);font-size:14px"></span></h2>
+        <div id="comments"></div>
+      </section>
+
+      <section class="card box">
+        <h2>Всички отговори <span id="rowCount" style="color:var(--muted);font-family:var(--font);font-size:14px"></span></h2>
+        <p class="box-sub">Един ред = оценката на един участник за едно обучение. Кошчето изтрива само този ред.</p>
+        <div id="table"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="tip" id="tip" aria-hidden="true"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- модален прозорец за потвърждение -->
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="card modal-box">
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+      <input class="input" id="modalInput" type="text" autocomplete="off" hidden>
+      <div class="modal-actions">
+        <button class="btn btn--sm" id="modalCancel" type="button">Отказ</button>
+        <button class="btn btn--sm btn--danger" id="modalOk" type="button">Изтрий</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
