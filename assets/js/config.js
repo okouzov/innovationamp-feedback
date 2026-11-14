@@ -17,7 +17,7 @@ const CONFIG = {
 
   /* Адрес на Google Apps Script Web App.
      Изглежда така: https://script.google.com/macros/s/AKfy..../exec */
-  API_URL: "PASTE_APPS_SCRIPT_URL_HERE",
+  API_URL: "https://script.google.com/macros/s/AKfycbwdLicHDjclB9W2ZYbgKFBfPgrYDCRn8nu6ty7CvPetZWwl81o9OVwAgu7Wn7KcmfDv/exec",
 
   /* false -> формата се заменя със съобщение „Анкетата е затворена“.
      Админ панелът продължава да работи. (Има същия ключ и в Code.gs.) */
