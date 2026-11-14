@@ -380,14 +380,6 @@
     }
   }
 
-  function resetAll() {
-    CONFIG.TRAININGS.forEach(t => { state.answers[t.key] = { scores: Array(NQ).fill(null), comment: "" }; });
-    state.selected = []; state.active = null; state.showErrors = false;
-    document.querySelectorAll("#pick input").forEach(i => { i.checked = false; });
-    onPickChange();
-    goStage("select");
-  }
-
   /* ---------- старт ---------- */
   if (API.demoMode()) $("demoPill").hidden = false;
 
@@ -410,7 +402,6 @@
     if (i < state.selected.length - 1) activate(state.selected[i + 1], true);
   });
   $("submitBtn").addEventListener("click", onSubmit);
-  $("again").addEventListener("click", resetAll);
 
   /* Предупреждение при затваряне с недовършена оценка. */
   window.addEventListener("beforeunload", (e) => {
