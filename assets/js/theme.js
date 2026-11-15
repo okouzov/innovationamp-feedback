@@ -1,8 +1,8 @@
 /* Светла / тъмна тема. Зарежда се в <head>, за да няма примигване.
-   По подразбиране е светла; изборът се помни в браузъра. */
+   По подразбиране е тъмна; изборът се помни в браузъра. */
 (function () {
   var KEY = "innovationamp_theme";
-  var DEFAULT = "light";
+  var DEFAULT = "dark";
   var theme;
   try { theme = localStorage.getItem(KEY); } catch (e) { /* без достъп до хранилището */ }
   if (theme !== "dark" && theme !== "light") theme = DEFAULT;
