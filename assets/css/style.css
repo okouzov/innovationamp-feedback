@@ -529,3 +529,45 @@ td.nowrap { white-space: nowrap; color: var(--ink-2); }
 :root[data-theme="dark"] .theme-btn .i-sun { display: block; }
 :root[data-theme="dark"] .theme-btn .i-moon { display: none; }
 body { transition: background-color .3s ease, color .3s ease; }
+
+/* ============================================================
+   Малка анимация на първата страница (презентация пред участници)
+   ============================================================ */
+.hero { display: flex; align-items: center; gap: 30px; }
+.hero-text { flex: 1; min-width: 0; }
+.hero-art { flex: none; width: 210px; }
+.edu { display: block; width: 100%; height: auto; overflow: visible; }
+.edu-screen { fill: var(--card-solid); stroke: var(--line-strong); stroke-width: 2; }
+.edu-stand, .edu-base { stroke: var(--line-strong); stroke-width: 3; stroke-linecap: round; }
+.edu-base { stroke-width: 2; }
+.edu-bar { transform-box: fill-box; transform-origin: 50% 100%; animation: eduGrow 7s cubic-bezier(.3, 1.4, .5, 1) infinite both; }
+.edu-bar--1 { fill: var(--ai);   animation-delay: 0s; }
+.edu-bar--2 { fill: var(--iot);  animation-delay: .18s; }
+.edu-bar--3 { fill: var(--data); animation-delay: .36s; }
+.edu-line { stroke: var(--ink-2); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; animation: eduDraw 7s ease-in-out infinite both; }
+.edu-dot { fill: var(--ink); transform-box: fill-box; transform-origin: center; animation: eduDot 7s ease-in-out infinite both; }
+.edu-cap { animation: eduFloat 3.4s ease-in-out infinite alternate; }
+.edu-cap-top { fill: var(--ai-glow); }
+.edu-cap-body { fill: var(--ai); }
+.edu-tassel { stroke: var(--data-glow); stroke-width: 2.5; stroke-linecap: round; }
+.edu-spark { fill: var(--data-glow); transform-box: fill-box; transform-origin: center; animation: eduTwinkle 2.8s ease-in-out infinite; }
+.edu-spark--2 { fill: var(--iot-glow); animation-delay: 1.3s; }
+.edu-person { transform-box: fill-box; transform-origin: 50% 100%; animation: eduNod 3.2s ease-in-out infinite; }
+.edu-person--1 { fill: var(--ai); }
+.edu-person--2 { fill: var(--iot);  animation-delay: .5s; }
+.edu-person--3 { fill: var(--data); animation-delay: 1s; }
+
+@keyframes eduGrow   { 0%, 6% { transform: scaleY(0); } 20%, 88% { transform: scaleY(1); } 100% { transform: scaleY(0); } }
+@keyframes eduDraw   { 0%, 22% { stroke-dashoffset: 100; } 42%, 88% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes eduDot    { 0%, 40% { transform: scale(0); } 48% { transform: scale(1.5); } 54%, 88% { transform: scale(1); } 100% { transform: scale(0); } }
+@keyframes eduFloat  { from { transform: translateY(3px) rotate(-4deg); } to { transform: translateY(-5px) rotate(5deg); } }
+@keyframes eduTwinkle { 0%, 100% { transform: scale(.3); opacity: .2; } 50% { transform: scale(1); opacity: 1; } }
+@keyframes eduNod    { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+@media (max-width: 720px) {
+  .hero { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .hero-art { width: 150px; align-self: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .edu * { animation: none !important; }
+}
